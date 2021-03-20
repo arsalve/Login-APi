@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    'Eid': {
-        type: String
-    },
     'Email': {
         type: String,
         unique: true,
@@ -17,10 +14,13 @@ const schema = mongoose.Schema({
     'address': {
         type: String
     }, 
+    'createdBy': {
+        type: String
+    }, 
     'fullName': {
         type: String,
         default: function(){return this.firstName+" "+this.lastName}
-    },
+    }
 },
     {
         timestamps: true
