@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/arsalve/Login-APi/issues"
   },
-  "homepage": "https://github.com/arsalve/Login-APi#readme"
+  "homepage": "https://github.com/arsalve/Login-APi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
