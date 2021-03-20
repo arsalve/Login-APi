@@ -1,0 +1,22 @@
+{
+  "name": "login-api",
+  "version": "0.0.1",
+  "description": "Simple api for performing creation and deletion of user",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arsalve/Login-APi.git"
+  },
+  "keywords": [
+    "Login"
+  ],
+  "author": "Ashish R Salve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arsalve/Login-APi/issues"
+  },
+  "homepage": "https://github.com/arsalve/Login-APi#readme"
+}
