@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/arsalve/Login-APi#readme",
   "dependencies": {
+    "chalk": "^4.1.0",
     "express": "^4.17.1"
   }
 }
