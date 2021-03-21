@@ -12,9 +12,9 @@ Guidlines:
 -----------------------------------------------------------------------------------
 # API endPoints
 1.  Login
-endpoint: /ELogin
-Use: to log in to the system and getting the token
-payload:
+*  endpoint: /ELogin
+*  Use: to log in to the system and getting the token
+*  payload:
   {
      "Email": string,
      "password":string
@@ -23,9 +23,9 @@ payload:
  -----------------------------------------------------------------------------------
  
  2.Add User
-   endpoint :/AddUser
-   use: Adding Normal user
-   payload:
+ *   endpoint :/AddUser
+ *   use: Adding Normal user
+ *   payload:
    {
     'Email': string,
     'firstName': String,
@@ -34,13 +34,13 @@ payload:
     'createdBy': String
   }
    
-   *  Token from login  Must be Added in hedder of request with key "Token" *
+    Token from login  Must be Added in hedder of request with key "Token" 
  -----------------------------------------------------------------------------------
  
 3.Finding User 
- endpoint : /FindUser
- use:Finding Normal user 
- payload:
+ * endpoint : /FindUser
+*  use:Finding Normal user 
+*  payload:
   {
     "query": {
         "Email": string 
@@ -50,14 +50,13 @@ payload:
         "limit": 3
     }
 }
-*  Token from login  Must be Added in hedder of request with key "Token" *
+Token from login  Must be Added in hedder of request with key "Token" 
 -----------------------------------------------------------------------------------  
 
 4.Finding Employee
-  endpoint: /FindEmp  
-  use:Finding Employee
-  
-  payload:{
+ *  endpoint: /FindEmp  
+ *  use:for Finding Employee
+ *  payload:{
     "query": {
         "Email": string 
     },
@@ -69,9 +68,9 @@ payload:
 -----------------------------------------------------------------------------------
 
 5.Creating Employee
-  endpoint :/AddEMP
-  use:Adding Employee user
-  payload:
+  * endpoint :/AddEMP
+ * use:Adding Employee user
+*   payload:
   {
     "isAdmin": Boolean,
     "Email":String,
