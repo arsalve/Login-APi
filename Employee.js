@@ -28,6 +28,10 @@ const schema = mongoose.Schema({
         type: String,
         default: function(){return this.firstName+" "+this.lastName}
     },
+    'Orgnization': {
+        type: String,
+        default: function(){return this.Email.split('@')[1].split('.com')[0]}
+    },
     'isAdmin': {
         type: Boolean,
         default:false
