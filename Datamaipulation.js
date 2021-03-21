@@ -151,11 +151,11 @@ async function userData(req, cb) {
         } else {
             return cb("Authentication failed ", 403)
         }
-    } catch {
-        (err) => {
+    } catch(err) {
             catchHandler("While conecting the DB", err, ErrorC);
-            return err;
-        }
+           
+            return  cb("Error", 500);
+        
     }
 
 
