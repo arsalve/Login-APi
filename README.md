@@ -50,6 +50,7 @@ Guidlines:
           "limit": 3
       }
   }
+  
     Token from login  Must be Added in hedder of request with key "Token" 
 -----------------------------------------------------------------------------------  
 
@@ -71,6 +72,7 @@ Guidlines:
   * endpoint :/AddEMP
   * use:Adding Employee user
   *  payload:
+ 
   {
     "isAdmin": Boolean,
     "Email":String,
@@ -79,5 +81,5 @@ Guidlines:
     "firstName":String,
     "lastName": String,
     "password":String
-}
+  }
 ----------------------------------------------------------------------------------- 
