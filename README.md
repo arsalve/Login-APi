@@ -1,6 +1,8 @@
 # User API
 Simple API for user creation login and update
 
+ Server URL :  https://apidemo12.herokuapp.com
+
 (Consider an dummy Organization which has some xyz product for which the employee have store the user data)
 
 Guidlines:
@@ -44,7 +46,7 @@ Guidlines:
       "query": {
           "Email": string 
       },
-      "page": { //For Pagination
+      "page": { //For Pagination please leave it blank if you want to search the data in full db  since it will search the data in given dimentions
           "page": 2, 
           "limit": 3
       }
