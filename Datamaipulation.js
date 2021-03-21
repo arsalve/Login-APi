@@ -9,7 +9,7 @@ const catchHandler = util.catchHandler;
 const ErrorC = chalk.red.inverse;
 const tokgen = new TokenGenerator(); // Default is a 128-bit token encoded in base58
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcryptjs")
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
