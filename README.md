@@ -18,7 +18,6 @@ Guidlines:
   {
      "Email": string,
      "password":string
-  
   }
  -----------------------------------------------------------------------------------
  
@@ -72,14 +71,13 @@ Guidlines:
   * endpoint :/AddEMP
   * use:Adding Employee user
   *  payload:
- 
-  {
-    "isAdmin": Boolean,
-    "Email":String,
-    "Eid": String, 
-    "address": String,
-    "firstName":String,
-    "lastName": String,
-    "password":String
-  }
+ {
+   "isAdmin": Boolean,
+   "Email":String,
+   "Eid": String, 
+   "address": String,
+   "firstName":String,
+   "lastName": String,
+   "password":String
+ }
 ----------------------------------------------------------------------------------- 
