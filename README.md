@@ -41,16 +41,16 @@ Guidlines:
  * endpoint : /FindUser
 *  use:Finding Normal user 
 *  payload:
-  {
-    "query": {
-        "Email": string 
-    },
-    "page": { //For Pagination
-        "page": 2, 
-        "limit": 3
-    }
-}
-Token from login  Must be Added in hedder of request with key "Token" 
+    {
+      "query": {
+          "Email": string 
+      },
+      "page": { //For Pagination
+          "page": 2, 
+          "limit": 3
+      }
+  }
+    Token from login  Must be Added in hedder of request with key "Token" 
 -----------------------------------------------------------------------------------  
 
 4.Finding Employee
@@ -69,8 +69,8 @@ Token from login  Must be Added in hedder of request with key "Token"
 
 5.Creating Employee
   * endpoint :/AddEMP
- * use:Adding Employee user
-*   payload:
+  * use:Adding Employee user
+  *  payload:
   {
     "isAdmin": Boolean,
     "Email":String,
