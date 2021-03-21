@@ -26,7 +26,7 @@ async function FindEmp(req, cb) {
     try {
         var result = await Employee.paginate(query, page);
 
-        if (query.Email != undefined && result.docs.length > 0)
+        if (result.docs.length > 0)
             return cb(result, 200);
         else
             return cb("object not Found", 404);
