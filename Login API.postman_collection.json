@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "ae358f9b-3ccd-4db5-bbd8-43682034dfed",
+		"name": "Login API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login For Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"Email\": \"a@b.com\",\r\n     \"password\":12345\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apidemo12.herokuapp.com/ELogin",
+					"protocol": "https",
+					"host": [
+						"apidemo12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"ELogin"
+					]
+				},
+				"description": "{\r\n     \"Email\":\"Email id\",\r\n     \"password\":\"password\"\r\n  \r\n}"
+			},
+			"response": [
+				{
+					"name": " http://localhost:8080/ELogin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"Email\": \"a@b.com\",\r\n     \"password\":12345\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ELogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ELogin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"53-p4jAzOCaoisqnuyZQdnJcuEtC4w\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Mar 2021 05:24:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Email\": \"a@b.com\",\n    \"Token\": \"4cnjWBVrd8WTr4rZPiK6mY\",\n    \"tokenCreatedAT\": 1616304263733\n}"
+				}
+			]
+		},
+		{
+			"name": "Add normal User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "Cj4wt6KUxcGJujJJLZpWkA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"dada@test.com\",\r\n    \"address\": \"Random\",\r\n    \"createdBy\":\"a4@b324242.com\",\r\n    \"firstName\": \"User3\",\r\n    \"lastName\": \"USer 3223\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apidemo12.herokuapp.com/AddUser",
+					"protocol": "https",
+					"host": [
+						"apidemo12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"AddUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Employee ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"Email\": \"a@b.com\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apidemo12.herokuapp.com/FindEmp",
+					"protocol": "https",
+					"host": [
+						"apidemo12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"FindEmp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Normal user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Token",
+						"value": "Cj4wt6KUxcGJujJJLZpWkA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"Email\": \"Tesewrt1@test.com\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/FindUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FindUser"
+					],
+					"query": [
+						{
+							"key": "Token",
+							"value": "2zMSzAZteFBGYpV9eZcGhS",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n     {\r\n        \"isAdmin\": true,\r\n        \"Email\": \"a1@b1.com\",\r\n        \"Eid\": \"12345\", \r\n        \"address\": \"wrfsd\",\r\n        \"firstName\": \"qwe\",\r\n        \"lastName\": \"eqwe\",\r\n        \"password\":12345\r\n\r\n    }\r\n  \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apidemo12.herokuapp.com/AddEMP",
+					"protocol": "https",
+					"host": [
+						"apidemo12",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"AddEMP"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
