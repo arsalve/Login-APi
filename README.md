@@ -79,6 +79,5 @@ Guidlines:
     "firstName":String,
     "lastName": String,
     "password":String
-
 }
 ----------------------------------------------------------------------------------- 
