@@ -140,7 +140,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"query\": {\r\n        \"Email\": \"a@b.com\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"query\": {\r\n        \"isAdmin\": true\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -164,18 +164,29 @@
 		},
 		{
 			"name": "Find Normal user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Token",
-						"value": "Cj4wt6KUxcGJujJJLZpWkA",
+						"value": "2JCUasRCc6QmpXEWDWfnTF",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"query\": {\r\n        \"Email\": \"Tesewrt1@test.com\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"query\": {\r\n       \"firstName\": \"User3\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -183,12 +194,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/FindUser",
-					"protocol": "http",
+					"raw": "https://apidemo12.herokuapp.com/FindUser",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"apidemo12",
+						"herokuapp",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"FindUser"
 					],
