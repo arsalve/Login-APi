@@ -1,6 +1,8 @@
 # User API
 Simple API for user creation login and update
 
+ Server URL :  https://apidemo12.herokuapp.com
+
 (Consider an dummy Organization which has some xyz product for which the employee have store the user data)
 
 Guidlines:
