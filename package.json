@@ -4,7 +4,8 @@
   "description": "Simple api for performing creation and deletion of user",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "run":"node index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "mongoose": "^5.12.1",
+    "mongoose-paginate-v2": "^1.3.16",
     "uuid-token-generator": "^1.0.0",
     "validator": "^13.5.2"
   }

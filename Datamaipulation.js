@@ -1,28 +1,32 @@
-const uri = "mongodb+srv://Alpha1996:Alpha1996@notepad.marpq.mongodb.net/Users?retryWrites=true&w=majority";
+const uri = process.env.DB ||"mongodb+srv://Alpha1996:Alpha1996@notepad.marpq.mongodb.net/Users?retryWrites=true&w=majority";
 const mongoose = require('mongoose');
 const chalk = require('chalk');
-const ErrorC = chalk.red.inverse;
+const TokenGenerator = require('uuid-token-generator');
 const Employee = require('./Employee.js');
 const User = require('./user.js');
 const util = require('./util.js');
 const catchHandler = util.catchHandler;
-const TokenGenerator = require('uuid-token-generator');
+const ErrorC = chalk.red.inverse;
 const tokgen = new TokenGenerator(); // Default is a 128-bit token encoded in base58
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const bcrypt = require('bcrypt');
+
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
 });
+
+//following function finds an employee based on given querry
 async function FindEmp(req, cb) {
-    var re = 0;
-    var query = {
-        'Email': req.body.Email
+    var query = req.body.query ? req.body.query : {};
+    var page = req.body.page ? req.body.page : {
+        "pagination": false
     };
     try {
-        var result = await Employee.find(query).exec();
-        if (query.Email != undefined && result.length > 0)
+        var result = await Employee.paginate(query, page);
+
+        if (query.Email != undefined && result.docs.length > 0)
             return cb(result, 200);
         else
             return cb("object not Found", 404);
@@ -31,16 +35,22 @@ async function FindEmp(req, cb) {
         return cb("Error", 500)
     }
 }
+
+//following function finds an user based on given querry
 async function FindUser(req, cb) {
-    if (Authorizer(req.Token, req.creatorEmail)) {
-        var re = 0;
-        var query = {
-            'Email': req.body.Email
+    var token = req.headers.token;
+    if (await Authorizer(token)) {
+        var query = req.body.query ? req.body.query : {};
+        
+
+        var page = req.body.page ? req.body.page : {
+            "pagination": false
         };
         try {
-            var result = await User.find(query).exec();
+            var result = await User.paginate(query, page);
+
             // console.log(result);
-            if (query.Email != undefined && result.length > 0)
+            if (result.docs.length > 0)
                 return cb(result, 200);
             else
                 return cb("object not Found", 404);
@@ -52,6 +62,8 @@ async function FindUser(req, cb) {
         return cb("Authentication failed ", 403)
     }
 }
+
+//following function creates an employee based on given data
 async function EmpData(req, cb) {
     try {
         if (emailRegexp.test(req.body.Email)) {
@@ -67,6 +79,7 @@ async function EmpData(req, cb) {
                 rawResult: true
 
             }).then(() => {
+                req.body.query =   req.body.query = query;
                 FindEmp(req, cb);
             });
         } else {
@@ -81,6 +94,8 @@ async function EmpData(req, cb) {
 
 
 }
+
+//following function creates an token employees email and password
 async function ELogin(req, cb) {
     var query = {
         'Email': req.body.Email
@@ -110,9 +125,12 @@ async function ELogin(req, cb) {
         return cb("Error", 500)
     }
 }
+
+//following function creates an User based on given data
 async function userData(req, cb) {
     try {
-        if (await Authorizer(req.body.Token, req.body.createdBy)) {
+        var token = req.headers.token;
+        if (await Authorizer(token)) {
             if (emailRegexp.test(req.body.Email)) {
                 var query = {
                     'Email': req.body.Email
@@ -124,6 +142,7 @@ async function userData(req, cb) {
                     rawResult: true
 
                 }).then(() => {
+                    req.body.query = query;
                     FindUser(req, cb);
                 });
             } else {
@@ -141,13 +160,15 @@ async function userData(req, cb) {
 
 
 }
-async function Authorizer(Token, Email, password) {
+
+//following function Validates an employee token provided in headder
+async function Authorizer(Token) {
     var query = {
         "Token": Token
     };
     try {
         var result = await Employee.find(query).exec();
-        if (result.length > 0 && result[0].Email == Email && (result[0].tokenCreatedAT < (result[0].tokenCreatedAT + 1800))) //setting Validity of token is to mins
+        if (result.length > 0 && (result[0].tokenCreatedAT < (result[0].tokenCreatedAT + 1800))&& result[0].isAdmin==true) //setting Validity of token is to mins and checking the user is admin or not
             return true
 
         else
@@ -157,6 +178,7 @@ async function Authorizer(Token, Email, password) {
     }
 
 }
+
 module.exports = {
     'FindEmp': FindEmp,
     'EmpData': EmpData,

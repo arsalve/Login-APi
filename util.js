@@ -1,5 +1,7 @@
+//Comon Catch handdling function
 const catchHandler = (location, message, color) => {
-    if (debug = true) {
+    var debug =true;
+    if (debug == true) {
         if (color == undefined) {
             color = chalk.blueBright;
         }

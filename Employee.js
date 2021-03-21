@@ -1,6 +1,7 @@
+//Creating mongoose model for Employee
 const mongoose = require('mongoose');
-const validator = require('validator');
-
+const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const mongoosePaginate = require('mongoose-paginate-v2');
 const schema = mongoose.Schema({
     'Eid': {
         type: String
@@ -9,7 +10,7 @@ const schema = mongoose.Schema({
         type: String,
         unique: true,
         validate:{
-            validator: validator.isEmail,
+            validator: emailRegexp.test,
             message: '{VALUE} is not a valid email',
             isAsync: false
           }
@@ -45,6 +46,8 @@ const schema = mongoose.Schema({
         timestamps: true
     }
 )
-const notes = mongoose.model('Employee', schema)
+schema.plugin(mongoosePaginate)
+const EMP = mongoose.model('Employee', schema);
 
-module.exports = notes;
+
+module.exports = EMP;
