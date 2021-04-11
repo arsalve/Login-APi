@@ -159,7 +159,6 @@
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
 					"path": [
 						"PDFJSON"
 					]
