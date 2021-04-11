@@ -17,32 +17,32 @@ Guidlines:
 *  endpoint: /ELogin
 *  Use: to log in to the system and getting the token
 *  payload:
-  {
+ _ {
      "Email": string,
      "password":string
-  }
+  }_
  -----------------------------------------------------------------------------------
  
  2.Add User
  *   endpoint :/AddUser
  *   use: Adding Normal user
  *   payload:
-   {
+  _ {
     'Email': string,
     'firstName': String,
     'lastName': String,
     'address': String,
     'createdBy': String
-  }
+  }_
    
-    Token from login  Must be Added in hedder of request with key "Token" 
- -----------------------------------------------------------------------------------
+**    Token from login  Must be Added in hedder of request with key "Token" **
+-----------------------------------------------------------------------------------
  
 3.Finding User 
  * endpoint : /FindUser
 *  use:Finding Normal user 
 *  payload:
-    {
+  _  {
       "query": {
           "Email": string 
       },
@@ -50,30 +50,30 @@ Guidlines:
           "page": 2, 
           "limit": 3
       }
-  }
+  }_
   
-    Token from login  Must be Added in hedder of request with key "Token" 
+**    Token from login  Must be Added in hedder of request with key "Token" **
 -----------------------------------------------------------------------------------  
 
 4.Finding Employee
  *  endpoint: /FindEmp  
  *  use:for Finding Employee
  *  payload:{
-    "query": {
+  _  "query": {
         "Email": string 
     },
     "page": { //For Pagination
         "page": 2, 
         "limit": 3
     }
-  }
+  }_
 -----------------------------------------------------------------------------------
 
 5.Creating Employee
   * endpoint :/AddEMP
   * use:Adding Employee user
   *  payload:
- {
+_ {
    "isAdmin": Boolean,
    "Email":String,
    "Eid": String, 
@@ -81,16 +81,18 @@ Guidlines:
    "firstName":String,
    "lastName": String,
    "password":String
- }
+ }_
 ----------------------------------------------------------------------------------- 
 
 6.Converting PDF to JSON  
  * endpoint : /PDFJSON
 *  use:for Converting PDF to Text 
 *  payload:
-    {
+   _ {
     "id": 123,
     "data:"<Baswe64 encoded PDF>"
-  }
+  }_
   
-    Token from login  Must be Added in hedder of request with key "Token" 
+**    Token from login  Must be Added in hedder of request with key "Token" **
+
+----------------------------------------------------------------------------------- 
