@@ -83,3 +83,14 @@ Guidlines:
    "password":String
  }
 ----------------------------------------------------------------------------------- 
+
+6.Converting PDF to JSON  
+ * endpoint : /PDFJSON
+*  use:for Converting PDF to Text 
+*  payload:
+    {
+    "id": 123,
+    "data:"<Baswe64 encoded PDF>"
+  }
+  
+    Token from login  Must be Added in hedder of request with key "Token" 
