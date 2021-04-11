@@ -179,11 +179,38 @@ async function Authorizer(Token) {
 
 }
 
+async function OCR(req,cb){
+    try {
+        var token = req.headers.token;
+        if (await Authorizer(token)) {
+            let path = "./pdf/" + req.body.id + '.pdf';
+            base64.base64Decode(req.body.data, path);
+            let dataBuffer = fs.readFileSync(path);
+            pdf(dataBuffer).then(function (data) {
+    
+                if (data.text == "" || data.text == null) {
+                    return cb(200,"Unable to read the data");
+                } else {
+                    return cb(200,data);
+                }
+            });
+        }else {
+            return cb("Authentication failed ", 403)
+        }
+    }
+    catch(err) {
+        catchHandler("While Processing the pdf", err, ErrorC);
+       
+        return  cb("Error", 500);
+    
+}
+}
 module.exports = {
     'FindEmp': FindEmp,
     'EmpData': EmpData,
     'ELogin': ELogin,
     'userData': userData,
-    'FindUser': FindUser
+    'FindUser': FindUser,
+    'OCR':OCR
 
 }

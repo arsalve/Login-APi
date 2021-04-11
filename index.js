@@ -8,7 +8,8 @@ const UserRouter = require('./Router.js');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(bodyParser.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 app.use(UserRouter)
 
 app.get('/', (req, res) => {
