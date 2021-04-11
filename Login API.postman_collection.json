@@ -154,7 +154,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/PDFJSON",
+					"raw": "https://apidemo12.herokuapp.com/PDFJSON",
 					"protocol": "http",
 					"host": [
 						"localhost"
