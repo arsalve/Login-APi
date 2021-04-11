@@ -1,8 +1,5 @@
 const express = require('express');
 const util = require('./util.js');
-const fs = require('fs');
-const pdf = require('pdf-parse');
-const base64 = require('base64topdf');
 const catchHandler = util.catchHandler;
 const DataManupulation = require('./Datamaipulation.js');
 const chalk = require('chalk');
@@ -83,10 +80,11 @@ router.post('/FindUser', (req, res) => {
         return err;
     }
 })
-router.post('/OCR', (req, res) => {
+//Endpoint for Converting PDF to Text
+router.post('/PDFJSON', (req, res) => {
     console.log(sucU("Decoding text"))
     try {
-        let Responce = DataManupulation.OCR(req, (responce, status) => {
+        let Responce = DataManupulation.PDFJSON(req, (responce, status) => {
             res.status(status).send(responce);
         });
     } catch (error) {

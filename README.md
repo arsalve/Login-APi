@@ -13,6 +13,7 @@ Guidlines:
 
 -----------------------------------------------------------------------------------
 # API endPoints
+-----------------------------------------------------------------------------------
 1.  Login
 *  endpoint: /ELogin
 *  Use: to log in to the system and getting the token
@@ -39,7 +40,7 @@ Guidlines:
  -----------------------------------------------------------------------------------
  
 3.Finding User 
- * endpoint : /FindUser
+* endpoint : /FindUser
 *  use:Finding Normal user 
 *  payload:
     {

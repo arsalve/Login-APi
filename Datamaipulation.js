@@ -1,6 +1,9 @@
 const uri = process.env.DB ||"mongodb+srv://Alpha1996:Alpha1996@notepad.marpq.mongodb.net/Users?retryWrites=true&w=majority";
 const mongoose = require('mongoose');
 const chalk = require('chalk');
+const fs = require('fs');
+const pdf = require('pdf-parse');
+const base64 = require('base64topdf');
 const TokenGenerator = require('uuid-token-generator');
 const Employee = require('./Employee.js');
 const User = require('./user.js');
@@ -126,6 +129,7 @@ async function ELogin(req, cb) {
     }
 }
 
+
 //following function creates an User based on given data
 async function userData(req, cb) {
     try {
@@ -161,6 +165,34 @@ async function userData(req, cb) {
 
 }
 
+//following function Takes Base64 encoded PDF and converts it into JSON Object containing information present in pdf such as"numpages":,"numrender","info","metadata","text" ,"version" 
+async function PDFJSON(req,cb){
+    try {
+        var token = req.headers.token;
+        if (await Authorizer(token)) {
+            let path = "./pdf/" + req.body.id + '.pdf';
+            base64.base64Decode(req.body.data, path);
+            let dataBuffer = fs.readFileSync(path);
+            pdf(dataBuffer).then(function (data) {
+    
+                if (data.text == "" || data.text == null) {
+                    return cb("Unable to read the data",200);
+                } else {
+                    return cb(data,200);
+                }
+            });
+        }else {
+            return cb("Authentication failed ", 403)
+        }
+    }
+    catch(err) {
+        catchHandler("While Processing the pdf", err, ErrorC);
+       
+        return  cb("Error", 500);
+    
+}
+}
+
 //following function Validates an employee token provided in headder
 async function Authorizer(Token) {
     var query = {
@@ -179,38 +211,12 @@ async function Authorizer(Token) {
 
 }
 
-async function OCR(req,cb){
-    try {
-        var token = req.headers.token;
-        if (await Authorizer(token)) {
-            let path = "./pdf/" + req.body.id + '.pdf';
-            base64.base64Decode(req.body.data, path);
-            let dataBuffer = fs.readFileSync(path);
-            pdf(dataBuffer).then(function (data) {
-    
-                if (data.text == "" || data.text == null) {
-                    return cb(200,"Unable to read the data");
-                } else {
-                    return cb(200,data);
-                }
-            });
-        }else {
-            return cb("Authentication failed ", 403)
-        }
-    }
-    catch(err) {
-        catchHandler("While Processing the pdf", err, ErrorC);
-       
-        return  cb("Error", 500);
-    
-}
-}
 module.exports = {
     'FindEmp': FindEmp,
     'EmpData': EmpData,
     'ELogin': ELogin,
     'userData': userData,
     'FindUser': FindUser,
-    'OCR':OCR
+    'PDFJSON':PDFJSON
 
 }
