@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const chalk = require('chalk');
+const cros=require('cors')
 const suc = chalk.greenBright;
 const port = process.env.PORT || 8080;
 const UserRouter = require('./Router.js');
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb'}));
+app.use(cros());
 app.use(UserRouter)
 
 app.get('/', (req, res) => {
