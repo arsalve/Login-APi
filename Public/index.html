@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<head>
+    <title>
+        Word Game
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="./game.js"></script>
+</head>
+
+<body>
+    <div class="col-xs-8 col-xs-offset-5" style="padding:2%;">
+        <button type="button" id="pla" class="btn" onclick="start()">Play</button>
+    </div>
+
+
+
+    <div id="main" class="container" hidden=true>
+
+
+        <span class="row col-xs-12">
+            <div class="col-xs-1 pan1" id="pa">
+                Timer
+            </div>
+            <div class="col-xs-1 pan1" id="hint">
+                Word:
+            </div>
+            <div class="col-xs-2 pan1" id="scoreDisplay">
+                Score:
+            </div>
+            <div class="col-xs-1 pan1" id="playe">
+                Player Name
+            </div>
+        </span>
+
+        <div id="D_bg" class="col-xs-10 col-xs-offset-1 row">
+            <div class="row">
+                <input class="panel-body pan2" id="word" disabled></input>
+            </div>
+            <hr>
+            <div class="row col-xs-12" style="text-align: center;">
+                <div id="key">
+                </div>
+            </div>
+            <div class="row">
+                <div>&nbsp</div>
+                <div class="row" style="text-align: center;">
+                    <button class="col-xs-6" id="submit" onclick="submitWord()">
+                        Submit
+                    </button>
+
+                    <button class=" col-xs-6" id="skip" onclick="skipWord()">
+                        Skip
+                    </button>
+                </div>
+                <div class="row">
+                    <hr>
+                </div>
+                <div  class="container" >
+                    <div id="123" class="col-xs-10 col-xs-offset-1 row">
+                        <div class="row" >
+                            <img height=300px width=750px id= "ingame" src="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr>
+                </div>
+                <div class="pan3 row" id="highscorer">
+                    high scorer holder:
+                </div>
+                <div class="row">
+                    <hr>
+                </div>
+                <div class="row pan3" id="Privious">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="pause" class="container" hidden=true>
+        <div id="D_bg" class="col-xs-10 col-xs-offset-1 row">
+            <div class="row">
+                <div class="tenor-gif-embed" data-postid="15639646" data-share-method="host" data-width="100%"
+                    data-aspect-ratio="2.128205128205128"><a
+                        href="https://tenor.com/view/golmaal-bollywood-golmaal3-johnny-lever-mein-nahi-dikhaunga-gif-15639646">Golmaal
+                        Bollywood GIF</a> from <a href="https://tenor.com/search/golmaal-gifs">Golmaal GIFs</a></div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+        </div>
+    </div>
+    <div id="landing" class="container">
+        <div id="D_bg" class="col-xs-10 col-xs-offset-1 row">
+            <div class="row">
+                <div class="tenor-gif-embed" data-postid="17854301" data-share-method="host" data-width="100%"
+                    data-aspect-ratio="2.3714285714285714"><a
+                        href="https://tenor.com/view/vasooli-golmaal3-abbey-jaldi-bol-kal-subah-panvel-nikalna-hai-mukesh-tiwari-gif-17854301">Vasooli
+                        Golmaal3 GIF</a> from <a href="https://tenor.com/search/vasooli-gifs">Vasooli GIFs</a></div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+        </div>
+    </div>
+    <div id="playe" class="container" hidden=true>
+        <div id="D_bg" class="col-xs-10 col-xs-offset-1 row">
+            <div class="row">
+                <div class="tenor-gif-embed" data-postid="15639646" data-share-method="host" data-width="100%"
+                    data-aspect-ratio="2.128205128205128"><a
+                        href="https://tenor.com/view/golmaal-bollywood-golmaal3-johnny-lever-mein-nahi-dikhaunga-gif-15639646">Golmaal
+                        Bollywood GIF</a> from <a href="https://tenor.com/search/golmaal-gifs">Golmaal GIFs</a></div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            </div>
+        </div>
+    </div>
+    <div id="mot" class="container" hidden=true>
+        <div id="D_bg" class="col-xs-10 col-xs-offset-1 row">
+            <div class="row">
+                <div class="tenor-gif-embed" data-postid="12543738" data-share-method="host" data-width="100%"
+                    data-aspect-ratio="2.376237623762376"><a
+                        href="https://tenor.com/view/bahubali2-yes-hunk-powder-gif-12543738">Bahubali2 Yes GIF</a> from
+                    <a href="https://tenor.com/search/bahubali2-gifs">Bahubali2 GIFs</a></div>
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+            </div>
+            <h2>All The Best and Jai Mahishmatiiii</h2>
+        </div>
+    </div>
+
+   
+
+    <div class="login-dark" id="info" hidden=true>
+        <form>
+            <h2 class="sr-only">Please Fill out Details</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="name" id="name" placeholder="Enter your name"required></div>
+            <div class="form-group"><input class="form-control" type="email" id="mail" placeholder="E-mail (Optional)" value="Not Provided">
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
+                    onclick="start()">Submit</button></div>
+        </form>
+    </div>
+
+
+    <script>
+        //printing high score
+        function highScorePrint() {
+
+            try {
+                $.ajax({
+                    type: "GET",
+                    url: "/data.php?q=give",
+                    dataType: "text",
+                    success: function (response) {
+                        localStorage.setItem("highscore", response);
+                        var toper = JSON.parse(localStorage.getItem("highscore"));
+                        document.getElementById("highscorer").innerHTML = "high score holder is " +
+                            toper
+                            .name +
+                            " with score of " + toper.score + " Points";
+                        try {
+                            var PlayerName = localStorage.getItem("PlayerName");
+                            var PriviousGame = JSON.parse(localStorage.getItem(PlayerName));
+                            var prviousstring = 'Privious Results:-';
+                            for (var i = 0; i < PriviousGame.length; i++) {
+                                var j = i + 1;
+                                prviousstring = prviousstring + "<br>" + j + " - " + JSON.stringify(
+                                    PriviousGame[i]);
+                            }
+                            document.getElementById("Privious").innerHTML = prviousstring;
+                        } catch (r) {
+                            document.getElementById("Privious").innerHTML = "First Game";
+                        }
+                    }
+                });
+
+            } catch (e) {
+                document.getElementById("highscorer").innerHTML = "Failed to load";
+            }
+
+        }
+        highScorePrint();
+    </script>
+</body>
+
+</html>
