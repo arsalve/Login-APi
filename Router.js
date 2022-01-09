@@ -1,8 +1,11 @@
 const express = require('express');
+const request = require('request');
 const util = require('./util.js');
-const catchHandler = util.catchHandler;
-const DataManupulation = require('./Datamaipulation.js');
 const chalk = require('chalk');
+const https = require('https');
+const DataManupulation = require('./Datamaipulation.js');
+const catchHandler = util.catchHandler;
+const tealiumCollect=util.tealiumCollect;
 const router = new express.Router();
 const ErrorC = chalk.red.inverse;
 const sucU = chalk.blue;
@@ -93,6 +96,22 @@ router.post('/PDFJSON', (req, res) => {
         return err;
     }
 
+})
+router.post('/tel',(req,res)=>{
+    try {
+        let flag=0;
+        let Responce = tealiumCollect(req, (responce, status,rq) => {
+            if(flag!=1){
+              res.status(status).send(responce.statusMessage);
+              rq.end();
+            flag=1;}
+        });
+    } catch (error) {
+        catchHandler("Error Occured in Router", error, ErrorC);
+        res.status(500).send("Issue with server");
+        return error;
+    }
+    
 })
 
 module.exports = router;
